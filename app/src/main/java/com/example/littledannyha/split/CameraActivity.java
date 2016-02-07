@@ -1,26 +1,33 @@
 package com.example.littledannyha.split;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class CameraActivity extends AppCompatActivity {
+public class CameraActivity extends Activity {
 
-    static final int REQUEST_TAKE_PHOTO= 1;
+    static final int REQUEST_TAKE_PHOTO = 1;
     private File pictureFile;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
+        Log.d("onActivityResult", "returned");
+        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK && data != null) {
             Bundle extras = data.getExtras();
+            Intent confirmPhotoIntent = new Intent(this, PhotoActivity.class);
+            confirmPhotoIntent.putExtra(PhotoActivity.photoURIKey, pictureFile.getAbsolutePath());
+            startActivity(confirmPhotoIntent);
         }
 
     }
@@ -29,9 +36,13 @@ public class CameraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-//        dispatchTakePictureIntent();
-
+        if (pictureFile != null) {
+//            Intent confirmPhotoIntent = new Intent(this, PhotoActivity.class);
+//            confirmPhotoIntent.putExtra(PhotoActivity.photoURIKey, pictureFile.getAbsolutePath());
+//            startActivity(confirmPhotoIntent);
+        }
     }
+
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -50,8 +61,11 @@ public class CameraActivity extends AppCompatActivity {
     }
 
 
-    private void dispatchTakePictureIntent() {
+    public void dispatchTakePictureIntent(View view) {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        Log.d("created photo file", "before request");
+//        startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+
         // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             // Create the File where the photo should go
@@ -63,12 +77,15 @@ public class CameraActivity extends AppCompatActivity {
             }
             // Continue only if the File was successfully created
             if (photoFile != null) {
+                Log.d("created photo file", "request photo intent");
                 pictureFile = photoFile;
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
                         Uri.fromFile(photoFile));
-                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+                startActivity(takePictureIntent);
+//                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
             }
         }
+
     }
 
 }

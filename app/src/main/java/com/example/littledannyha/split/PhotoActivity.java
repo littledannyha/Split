@@ -1,5 +1,7 @@
 package com.example.littledannyha.split;
 
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,7 +19,8 @@ public class PhotoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_photo);
         String photoURI = savedInstanceState.getString(photoURIKey);
         ImageView i = (ImageView) findViewById(R.id.photo_activity_image);
-
+        Uri uri = Uri.parse(photoURI);
+        i.setImageURI(uri);
 
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
