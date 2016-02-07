@@ -15,6 +15,10 @@
     <string name="Banner">Split</string>
     <string name="title_activity_photo">PhotoActivity</string>
     <string name="title_activity_sort">SortActivity</string>
+    <string name="title_activity_num_people">NumPeopleActivity</string>
+    <string name="title_activity_confirm_items">ConfirmItemsActivity</string>
+    <string name="title_activity_summary">SummaryActivity</string>
+    <string name="title_activity_charges">ChargesActivity</string>
 
 
 </resources>

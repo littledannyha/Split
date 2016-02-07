@@ -51,6 +51,31 @@
             android:label="@string/title_activity_photo"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".SortActivity"
+            android:label="@string/title_activity_sort"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".NumPeopleActivity"
+            android:label="@string/title_activity_num_people"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".ConfirmItemsActivity"
+            android:label="@string/title_activity_confirm_items"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".SummaryActivity"
+            android:label="@string/title_activity_summary"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".ChargesActivity"
+            android:label="@string/title_activity_charges"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
