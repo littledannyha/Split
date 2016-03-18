@@ -2,7 +2,6 @@ package com.example.littledannyha.split;
 
 import android.os.Bundle;
 
-package com.example.elaine.myapplication;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -20,7 +19,7 @@ public class SortActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int s = savedInstanceState.getInt(NumPeopleActivity.NUM_PEOPLE);
+//        int s = savedInstanceState.getInt(NumPeopleActivity.NUM_PEOPLE);
         setContentView(R.layout.activity_sort);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
